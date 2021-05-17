@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validering</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <meta charset="utf-8">
+    
+    </head>
+    <body>
+    <div id="uppgift-one">
+    <h2>Validering och Js</h2>
+    </div>    
+        
+<div id="uppgift-two">
+    <h2 id="h2">Registering Form med js</h2>
+        <form id="form_id" method="post" name="myform">
+            <label id="lone">Användernamn</label>
+                <input class="input" type="text" name="username" id="username" placeholder="Använder namn">
+<br>
+<br>
+    
+            <label id="ltwo">Lösenord :</label>
+                <input class="input" type="password" name="password" id="password" placeholder="Max 6 stycken">
+<br>
+<br>
+    
+            <label id="ltree">Upprepa lösenord</label>
+<br>
+                <input class="input" type="password" name="password1" id="password1" placeholder="Lösenord igen">
+<br>
+<br>
+<br>
+            <label id="lfour">E-post:</label>
+                <input type="email" name="email" value="" class="input" id="email" placeholder="Ett giltigt e-post" onclick="mailvalid()">
+<br>
+<br>
+<br>
+            <label id="lfive">Acceptera villkor:</label> 
+                <input  type="checkbox" name="check" id="check">
+                <input type="button" value="Registera" id="submit" onclick="jsvalidation()">
+</form>
+</div>
+        
+<div id="uppgift-tree">
+<h2 id="h2">Registering Form med HTML</h2>
+    <form name="uppgift3">
+        <label id="l-one" for="choose">Användernamn:</label>
+            <input class="inpu" type="text" name="user" required 
+                data-fv-not-empty___message="Du måste välja ett användernamn!" pattern="^[a-zA-Z0-9]+$" placeholder="Använder namn"
+                data-fv-regexp___message="The username can only consist of alphabetical, number">
+<br><br>
+        <label id="l-two" for="choose">Lösenord:</label>
+            <input class="inpu" id="choose" type="password" name="pass" required minlength="6" maxlength="6" placeholder="Lösenord" oninvalid="alert('Du måste välja ett lösenord som består av max 6 charactar');">
+<br><br>
+        <label id="l-tree" for="choose">Upprepa lösenord</label>
+            <input class="inpu" type="password" name="pass1" required minlength="6" placeholder="Lösenord igen" maxlength="6" oninvalid="alert('Du måste upprepa ditt lösenord som består av max 6 charactar');" >
+<br>
+        <label id="l-four" for="choose">E-post</label>
+            <input class="inpu" type="email" name="em" placeholder="Ett giltigt e-post" required oninvalid="alert('Du måste välja fylla det fältet');" pattern=".+@beststartupever.com">
+<br><br><br><br><br>
+        <label id="l-five" for="choose">Acceptera villkor:</label> 
+            <input id="checkbox" type="checkbox" name="check" required oninvalid="alert('Du måste acceptera villkoret först');">
+
+       
+		<a href="index.html"><input type="button" value="Registera" id="submit"></a> 
+</form>       
+        
+</div>
+        
+<script>
+//script till uppgift 2;
+
+
+// min validation funcktion.
+function jsvalidation(){
+// läsa om data.
+var username  = document.getElementById("username").value;
+var password  = document.getElementById("password").value;
+var password1 = document.getElementById("password1").value;
+var email     = document.getElementById("email").value;   
+var check     = document.getElementById("check").checked;
+var p         = password.length;
+
+// varning om man fyller inte username.
+if(username == false){
+    alert("plz var vänlig och fyll username!");
+    document.getElementById("username").style.borderColor="red";
+    return false;
+}
+else{
+     document.getElementById("username").style.borderColor="green";
+}
+
+// varning om man fyller inte lösenordet.
+if(password == false){
+    alert("plz var vänlig och välja ett lösenord!");
+     document.getElementById("password").style.borderColor="red";
+        return false;
+
+}
+else{
+     document.getElementById("password").style.borderColor="green";
+}
+// varning om man fyller inte upprepning lösenord.
+if(password1 == false){
+    alert("plz var vänlig och upprepa ditt lösenord!");
+     document.getElementById("password1").style.borderColor="red";
+        return false;
+
+}
+else{
+     document.getElementById("password1").style.borderColor="green";
+}
+// varning om lösenordet matchar inte med upprepningen.
+if(password1 != password){
+        alert("Inloggning misslyckades! Dina lösenord matchar inte med varandra");
+        document.getElementById("password").style.borderColor="red";
+        document.getElementById("password1").style.borderColor="red";
+    
+    return false;
+
+}
+else{
+        document.getElementById("password").style.borderColor="green";
+        document.getElementById("password1").style.borderColor="green";
+
+}
+// varning om man fyller inte e-post.
+if (email == false){
+    alert("plz var vänlig och fyll ditt e-post!");
+    document.getElementById("email").style.borderColor="red";
+
+    return false;
+}
+else{
+     document.getElementById("email").style.borderColor="green";
+}
+
+// varning om man aceptra inte villkoret.
+if(check == false){
+    alert("first acceptera villkoret!");
+    document.getElementById("check").style.borderColor="red";
+
+    return false;
+}
+else{
+     document.getElementById("check").style.borderColor="green";
+}
+    
+// varning om lösenordet är större än 6-st.
+if(p > 7){
+    alert("Din lösenord är större än 6-st, det ska vara max 6-st")
+    document.getElementById("password").style.borderColor="red";
+    return false;
+}
+else{
+// // varning om registering
+alert ("Signing successfully");
+// Skicka till nästa sida som heter success html sida.
+window.location = "index.html";
+return false;
+}
+
+}
+  </script> 
+   
+    </body>
+</html>
